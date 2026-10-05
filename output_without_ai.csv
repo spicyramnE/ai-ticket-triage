@@ -1,0 +1,11 @@
+id,subject,predicted_category,predicted_priority
+1,Cannot login,Bug,High
+2,Login fixed now,Bug,High
+3,Checkout broken,Bug,Critical
+4,Dashboard slow,Performance,Low
+5,Billing question,Billing,Critical
+6,Double charged,Billing,High
+7,Add dark mode,Feature Request,Critical
+8,Data leak concern,Security,Low
+9,App keeps freezing,Performance,High
+10,Thanks for the help,Uncategorized,Low

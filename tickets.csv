@@ -1,0 +1,11 @@
+id,subject,body,true_category,true_priority
+1,Cannot login,"The login page keeps crashing every time I enter my password. I cannot access my account at all.",Bug,High
+2,Login fixed now,"The login page is NOT crashing anymore after the last update. Please close this ticket, everything works.",Resolved,Low
+3,Checkout broken,"Customers are unable to complete checkout. We are losing sales every single minute this continues.",Bug,Critical
+4,Dashboard slow,"The analytics dashboard takes almost 40 seconds to load. It used to be instant. Very frustrating.",Performance,Medium
+5,Billing question,"I love the new reports feature! Just a quick question - where can I download my past invoices?",Question,Low
+6,Double charged,"I was charged twice for my monthly subscription this month. Please refund the extra payment.",Billing,High
+7,Add dark mode,"Would be great if you could add a dark mode theme to the app. Not urgent, just a nice to have.",Feature Request,Low
+8,Data leak concern,"I noticed that other users email addresses are visible in the shared report export. This looks like a privacy problem.",Security,Critical
+9,App keeps freezing,"Every time I open the reports section the whole app freezes and I have to restart it. Happening since yesterday.",Bug,High
+10,Thanks for the help,"Just wanted to say the support team was great last week. No issue here, feel free to ignore.",Resolved,Low
