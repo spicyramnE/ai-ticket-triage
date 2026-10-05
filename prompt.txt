@@ -1,20 +1,22 @@
-PROMPT GIVEN TO THE AI (Claude) FOR EACH TICKET
-================================================
+PROMPTS SENT TO THE AI MODEL (google/flan-t5-large)
+===================================================
 
-You are a support ticket triage assistant. For each ticket below, read the
-subject and body carefully and output two things:
+The script triage_with_ai.py builds these two questions for every ticket and
+feeds them to the local AI model. The model reads the ticket and answers.
 
-1. Category - one of: Bug, Performance, Billing, Security, Feature Request,
-   Question, Resolved
-2. Priority - one of: Critical, High, Medium, Low
+1) CATEGORY PROMPT
+------------------
+Classify this customer support ticket into exactly one category from this list:
+Bug, Performance, Billing, Security, Feature Request, Question, Resolved.
+A ticket that says a problem is already fixed is Resolved.
+Ticket: "<subject>. <body>". Category:
 
-Rules to follow:
-- Understand the meaning, not just keywords. A ticket that says a problem is
-  "NOT crashing anymore" or "fixed now" is Resolved, not a Bug.
-- Judge urgency from impact. "Losing sales every minute" or a data/privacy
-  leak is Critical even if the words "urgent" or "critical" never appear.
-- A polite thank-you note with "no issue" is Resolved, not a real ticket.
-- A friendly question about where to find something is a Question, even if it
-  mentions billing words like "invoice".
+2) PRIORITY PROMPT
+------------------
+What is the priority of this support ticket? Choose exactly one:
+Critical, High, Medium, Low. A security or data leak, or something that stops
+customers, is Critical. A fixed issue or a nice-to-have is Low.
+Ticket: "<subject>. <body>". Priority:
 
-Output only the category and priority for each ticket.
+The model's answer is matched back to the allowed labels. Unlike the keyword
+rules, the model understands the sentence, so it handles negation and context.

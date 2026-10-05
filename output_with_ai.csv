@@ -1,11 +1,11 @@
 id,subject,predicted_category,predicted_priority
-1,Cannot login,Bug,High
-2,Login fixed now,Resolved,Low
+1,Cannot login,Bug,Critical
+2,Login fixed now,Resolved,High
 3,Checkout broken,Bug,Critical
-4,Dashboard slow,Performance,Medium
+4,Dashboard slow,Performance,Low
 5,Billing question,Question,Low
 6,Double charged,Billing,High
 7,Add dark mode,Feature Request,Low
-8,Data leak concern,Security,Critical
+8,Data leak concern,Security,High
 9,App keeps freezing,Bug,High
 10,Thanks for the help,Resolved,Low
