@@ -32,9 +32,18 @@ python webapp.py
 # open http://localhost:5000
 ```
 
-Paste any ticket and it shows the rule-based result next to the AI result,
-side by side. The link "run all 10 sample tickets" shows the full accuracy
-comparison table. (The first AI triage loads the model, ~20 seconds.)
+A "Help Desk" simulator that tells the story in three stages:
+
+1. **Incoming queue** - 10 raw tickets arrive, untriaged.
+2. **Triage the usual way (rules)** - keyword rules auto-triage them and
+   *mis-route* several (a Critical data leak marked Low, a resolved ticket
+   reopened as a Bug, a question sent to Finance as Critical). Mis-handled
+   rows are shown in red with the reason.
+3. **Triage with AI** - the AI model re-reads the same tickets and routes them
+   correctly; fixed rows turn green.
+
+There is also a **"Try it live"** box that runs the real AI model on any ticket
+you type (first run loads the model, ~20 seconds).
 
 ## How to run
 
