@@ -1,53 +1,19 @@
 """
-Ticket triage WITHOUT AI.
-Uses simple keyword matching rules to assign a category and priority.
-This is the traditional, rule-based approach.
+Ticket triage WITHOUT AI (keyword rules).
+Reads tickets.csv, triages each ticket, writes output_without_ai.csv.
+The rule logic lives in triage_lib.py (rule_triage).
 """
 import csv
-
-# Keyword rules for category: first match wins
-CATEGORY_KEYWORDS = [
-    ("Billing", ["invoice", "charged", "refund", "payment", "billing", "subscription"]),
-    ("Security", ["leak", "breach", "hacked", "password stolen", "vulnerability"]),
-    ("Performance", ["slow", "lag", "takes", "seconds", "loading", "freeze", "freezing"]),
-    ("Bug", ["crash", "crashing", "broken", "error", "cannot", "not working", "bug"]),
-    ("Feature Request", ["add", "would be great", "nice to have", "feature", "request"]),
-]
-
-# Keyword rules for priority
-HIGH_WORDS = ["crash", "crashing", "broken", "cannot", "charged twice", "freeze", "freezing"]
-CRITICAL_WORDS = ["urgent", "critical", "emergency", "losing sales", "down"]
-
-
-def triage(subject, body):
-    text = (subject + " " + body).lower()
-
-    category = "Uncategorized"
-    for cat, words in CATEGORY_KEYWORDS:
-        if any(w in text for w in words):
-            category = cat
-            break
-
-    priority = "Low"
-    if any(w in text for w in HIGH_WORDS):
-        priority = "High"
-    if any(w in text for w in CRITICAL_WORDS):
-        priority = "Critical"
-
-    return category, priority
+from triage_lib import rule_triage
 
 
 def main():
     rows = []
     with open("tickets.csv", newline="", encoding="utf-8") as f:
         for t in csv.DictReader(f):
-            cat, pri = triage(t["subject"], t["body"])
-            rows.append({
-                "id": t["id"],
-                "subject": t["subject"],
-                "predicted_category": cat,
-                "predicted_priority": pri,
-            })
+            cat, pri = rule_triage(t["subject"], t["body"])
+            rows.append({"id": t["id"], "subject": t["subject"],
+                         "predicted_category": cat, "predicted_priority": pri})
 
     with open("output_without_ai.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["id", "subject", "predicted_category", "predicted_priority"])

@@ -13,14 +13,28 @@ this is done constantly, and doing it well directly affects response time.
 | File | What it is |
 |------|------------|
 | `tickets.csv` | 10 sample tickets with the correct (true) category & priority |
-| `triage_without_ai.py` | Rule-based triage using keyword matching (no AI) |
-| `triage_with_ai.py` | AI triage using a local model (google/flan-t5-large) |
+| `triage_lib.py` | Shared triage logic (rule-based + AI), used by everything |
+| `triage_without_ai.py` | CLI: rule-based triage using keyword matching (no AI) |
+| `triage_with_ai.py` | CLI: AI triage using a local model (google/flan-t5-large) |
+| `webapp.py` | **Web app** to demo both methods live in the browser |
 | `prompt.txt` | The instructions (prompts) the AI model is given |
 | `compare.py` | Scores both methods against the true labels |
-| `requirements_ai.txt` | Python libraries needed for the AI script |
+| `requirements_ai.txt` | Python libraries needed for the AI + web app |
 
-Both scripts write their predictions to `output_without_ai.csv` /
+Both CLI scripts write their predictions to `output_without_ai.csv` /
 `output_with_ai.csv`, and `compare.py` scores them.
+
+## Web app (live demo)
+
+```bash
+pip install -r requirements_ai.txt
+python webapp.py
+# open http://localhost:5000
+```
+
+Paste any ticket and it shows the rule-based result next to the AI result,
+side by side. The link "run all 10 sample tickets" shows the full accuracy
+comparison table. (The first AI triage loads the model, ~20 seconds.)
 
 ## How to run
 
