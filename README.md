@@ -1,5 +1,22 @@
 # AI vs Rule-Based Ticket Triage
 
+## DevOps features in this project (where each concept lives)
+
+| DevOps concept | Where it is in this project |
+|----------------|------------------------------|
+| **Version control** | Git + GitHub (this repository) |
+| **CI/CD pipeline** | GitHub Actions (`.github/workflows/ci.yml`) runs on every push: installs deps, runs the triage, runs automated tests, runs the comparison |
+| **Automated testing** | `test_triage.py` (pytest), executed by the CI pipeline |
+| **Containerization** | `Dockerfile` packages the web app into a container (`docker build` / `docker run`) |
+| **Incident management / AIOps** | The triage feature itself - routing support tickets to the right team at the right priority, improving MTTR using AI |
+
+MTTR (Mean Time To Resolution) is one of the four DORA DevOps metrics; faster,
+more accurate triage lowers it. Using AI to do operations work like this is
+called **AIOps**.
+
+---
+
+
 A small DevOps lab task comparing **support-ticket triage done the traditional
 way (keyword rules)** against **the same triage done with AI (Claude)**.
 

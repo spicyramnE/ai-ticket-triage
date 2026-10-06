@@ -240,7 +240,11 @@ def try_live():
     subject = request.form.get("subject", "")
     body = request.form.get("body", "")
     rc, rp = rule_triage(subject, body)
-    ac, ap = ai_triage(subject, body)
+    try:
+        ac, ap = ai_triage(subject, body)
+    except Exception:
+        # e.g. running in the lightweight Docker image without the AI model
+        ac, ap = "unavailable", "unavailable"
     live = {
         "rc": rc, "rp": rp, "rc_c": PRI_COLOR.get(rp, "#555"), "rteam": ROUTE.get(rc, "Manual review"),
         "ac": ac, "ap": ap, "ac_c": PRI_COLOR.get(ap, "#555"), "ateam": ROUTE.get(ac, "Manual review"),

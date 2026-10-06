@@ -1,0 +1,30 @@
+name: CI
+
+# Continuous Integration: runs automatically on every push and pull request.
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install flask pytest
+
+      - name: Run rule-based triage
+        run: python triage_without_ai.py
+
+      - name: Run automated tests
+        run: pytest -v
+
+      - name: Run comparison (uses committed AI results)
+        run: python compare.py

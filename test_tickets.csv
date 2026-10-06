@@ -1,0 +1,13 @@
+id,subject,body,true_category,true_priority
+1,Dashboard no longer slow,"The dashboard is no longer slow after your fix. Thank you, everything works well now.",Resolved,Low
+2,Update payment method,"I need to update my saved payment method before my next billing date, please guide me.",Billing,Low
+3,Company-wide login outage,"Nobody across the whole company can log in. All our staff are blocked from working right now.",Bug,Critical
+4,Seeing another users orders,"My account page is showing another customer's orders and home address. This seems very wrong.",Security,Critical
+5,Please add PDF export,"Please urgently add an option to export the reports as a PDF. Our team would really use it.",Feature Request,Medium
+6,Laggy on large uploads,"The app gets very laggy when I upload large files and takes a long time to respond.",Performance,Medium
+7,How to upgrade plan,"Quick question: how do I upgrade from the free plan to the pro plan on my account?",Question,Low
+8,Problem resolved itself,"The sync problem resolved itself overnight, so please disregard my earlier ticket about it.",Resolved,Low
+9,Save throws 500 error,"Every time I click Save on the profile page the site throws a 500 server error.",Bug,High
+10,Entire website down,"The entire website is down and returning errors for all of our users right now.",Bug,Critical
+11,Overcharged on invoice,"I think I was overcharged on this month's invoice, the total looks much higher than usual.",Billing,High
+12,Small shortcut idea,"Love the app! Minor idea: could you add a keyboard shortcut for search sometime? No rush.",Feature Request,Low
